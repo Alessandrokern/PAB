@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Airborne Brigade</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Phantom Airborne Brigade</h1>
+</header>
+
+<!-- Navigation Menu -->
+<nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul id="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Main Content -->
+<section class="container">
+    <div class="column">
+        <h2>About Us</h2>
+        <p>The Phantom Airborne Brigade honors paratroopers and airborne soldiers with events, history, and camaraderie.</p>
+    </div>
+    <div class="column">
+        <img src="https://via.placeholder.com/400" alt="Airborne Soldiers">
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Phantom Airborne Brigade. All Rights Reserved.</p>
+</footer>
+
+<!-- JavaScript for Mobile Menu -->
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("show");
+    }
+</script>
+
+</body>
+</html>
