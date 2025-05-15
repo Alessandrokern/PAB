@@ -1,159 +1,514 @@
 /* General Styles */
-* {
-    margin: 0;
-    padding: 0;
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;  
+}
+
+/* Responsive Navigation*/
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background: #c9c9b7;
+    font-family: 'Poppins', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo{
+    width: 70px;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width:  52%;
+}
+
+.nav-links li{
+    list-style: none;
+}
+
+.nav-links a{
+    color: #4a4a31;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative; /* Needed for positioning the underline */
+}
+
+/* hover */
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; /* Underline height */
+    background-color: #4a4a31; /* Underline color */
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Full width underline on hover */
+}
+
+.nav-links a:focus::after, .nav-links a.active::after {
+    width: 100%; /* Keep underline active */
+}
+
+/* End of hover code*/
+
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: #4a4a31;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px){
+    .nav-links{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:768px){
+    body{
+        overflow-x: hidden;
+    }
+
+    .nav-links{
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: #c9c9b7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li{
+        opacity: 0;
+    }
+
+    .burger{
+        display: block;
+    }
+}
+
+
+.nav-active{
+    transform: translateX(0%);
+}
+
+ 
+@keyframes navlinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* The X of the on the mobile menu*/
+
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px)
+}
+
+.toggle .line2{
+    opacity: 0;
+}
+
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px)
+}
+
+
+/* Make sure the video container is full width and height */
+
+.video-container {
+    position: relative;/* CHANGE Back to Relative if it does not work*/
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hide anything that goes out of bounds */
+}
+
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center the video horizontally */
+    width: 100%; /* Make sure the video takes up full width */
+    height: auto; /* Maintain aspect ratio */
+    min-height: 100%; /* Ensure the video always fills the container vertically */
+    object-fit: cover; /* Ensures the video covers the area without stretching */
+}
+
+ 
+/* Content container */
+
+.conten {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; /* Center text inside .conten */
+    color: white; /* White text color */
+    font-family: 'Poppins', sans-serif;
+    padding: 0 5px; /* Add some padding on smaller screens */
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
+
+.conten h1 {
+    font-size: 3rem; /* Large font size for large screens */
+    margin-bottom: 1px;
 }
 
-/* Header */
-header {
-    background: #000;
+.conten p {
+    font-size: 1rem; /* Large font size for large screens */
+    margin-bottom: 40px;
+}
+
+
+/* Button styling */
+
+.conten button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #4a4a31;
     color: white;
-    padding: 20px;
-}
-
-header h1 {
-    font-size: 2em;
-}
-
-/* Navigation Bar */
-nav {
-    background: #333;
-    text-align: center;
-    padding: 10px;
-}
-
-/* Hide menu by default on mobile */
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: none;
-}
-
-nav ul li {
-    padding: 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-}
-
-/* Hamburger Icon */
-.menu-toggle {
-    color: white;
-    font-size: 24px;
+    border: none;
     cursor: pointer;
-    display: none;
+    transition: background-color 0.3s ease;
+    border-radius: 30px; /* Rounded corners */
 }
 
-/* Show menu when active */
-nav ul.show {
-    display: block;
-    background: #444;
+
+/* Hover effect for the button */
+
+.conten button:hover {
+    background-color: #333;
 }
 
-/* Responsive Design */
+
+/* Media queries for responsiveness */
+
+ 
+
+/*video hero needs to be FIXED*/
+
+@media screen and (min-width: 480px){
+    .video-container{
+       aspect-ratio: 1280 / 480;
+    }
+}
+
+@media screen and (min-width: 480px){
+    .background-video{
+        aspect-ratio: 1280 / 480;
+    }
+}
+
+
+/* For screens smaller than 768px (tablets, small laptops) */
+
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Show hamburger icon */
+    .conten h1 {
+        font-size: 2.5rem; /* Slightly smaller text */
+        margin-bottom: 15px;
     }
 
-    nav ul {
-        width: 100%;
-        text-align: center;
-    }
-
-    nav ul li {
-        border-bottom: 1px solid #555;
+    .conten button {
+        padding: 12px 25px; /* Increase button size for better accessibility */
+        font-size: 1.1rem; /* Slightly larger font for readability */
     }
 }
 
-/* Hero Section (Background Image) */
-.hero {
-    background: url('https://www.phantomairborne.org/images/banner.jpg') no-repeat center center/cover;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-}
+ 
 
-/* Main Content */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-}
-
-.column {
-    width: 45%;
-    padding: 20px;
-    background: white;
-    margin: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Columns */
-@media (max-width: 768px) {
-    .column {
-        width: 90%;
-    }
-}
-
-/* Images */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Image Gallery */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-}
-
-.gallery img {
-    width: 30%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 5px;
-}
-
-/* Responsive Gallery */
-@media (max-width: 768px) {
-    .gallery img {
-        width: 45%;
-    }
-}
+/* For screens smaller than 480px (mobile devices) */
 
 @media (max-width: 480px) {
-    .gallery img {
-        width: 90%;
+    .conten h1 {
+        font-size: 2rem; /* Smaller text for mobile */
+        margin-bottom: 10px;
+    }
+
+
+    .conten button {
+        padding: 10px 20px; /* Adjust padding for mobile */
+        font-size: 1rem; /* Keep the font size readable */
+    }
+
+ 
+    .conten {
+        padding: 0 10px; /* Reduce padding on smaller screens */
     }
 }
 
-/* Footer */
-footer {
-    background: #222;
-    color: white;
-    padding: 15px;
-    margin-top: 20px;
+ 
+
+/* Start of "The about us Section" */
+
+ 
+
+.about-us {
+    padding:80px 0px;
 }
+
+.container {
+    max-width: 1200px;
+    margin:0 auto;
+    padding: 0 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding:0 20px;
+}
+
+.about-us h2{
+    font-size: 45px;
+    margin-bottom: 20px;
+    color:darkolivegreen;
+}
+
+.about-us h3{
+    font-size: 30px;
+    color:olive;
+    text-decoration-line: underline;
+    text-decoration-color: darkolivegreen;
+    margin-bottom: 10px;  
+}
+
+.about-us p{
+    font-size: 20px;
+    line-height: 1.0;
+    color: black;
+    margin-bottom: 7px;
+}
+
+ul.a {/*bullets portion*/
+    list-style-type: dark circle;
+    font-size: 17px;
+    margin-bottom: 25px;
+  }
+
+.about-us img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin:0 auto;
+}
+
+.filter-shadow{
+    filter: drop-shadow(.70em .70em .5em);
+    color:#4a4a31;
+}
+
+
+.social-links{
+    margin-bottom: 20px;
+}
+
+.social-links a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right:10px;
+    color:#fff;
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+.social-links a:hover{
+    transform: translateY(-3px);
+}
+
+.btn{
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;/*18px*/
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 30px; /* Rounded corners */
+    background-color:#4a4a31;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+.btn:hover{
+    background-color: #333;
+}
+
+@media screen and (max-width: 768px){    /*responsive part of the about us section*/
+    .row{
+        flex-direction: column;
+    }
+    
+    .flex{
+        max-width: 100%;
+    }
+
+    .about-us h2{
+        font-size: 31px;
+    }
+
+    .about-us p{
+        font-size: 16px;
+    }
+
+    .social-links a{
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        margin-right: 5px;
+    }
+
+    .btn{
+        font-size: 16px;
+        padding: 8px 16px;
+        margin-bottom: 30px;
+    }
+}
+
+/* End of "About Us Section"*/
+
+ 
+
+/*Start of "Team Section" */
+
+.team-section {
+    padding: 80px 0px;
+}
+
+img {
+    display:block;
+    width: 100%;
+}
+
+.team-section { /*This section may be removed if it does not work*/
+    background:#c9c9b7
+}
+
+.team-section h1{
+    text-align: center;
+    font-size: 3rem;
+    text-decoration: underline;
+    color:darkolivegreen;
+}
+
+.container{
+    width: 1100px;
+    max-height: 100%;
+}
+
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 100%;
+    padding: 2rem;
+    margin: 2rem 0;/*The zzero creates padding to the right*/
+    grid-gap: 2rem;
+}
+
+.card_data{
+    display: flex;
+    background: #4a4a31;
+    padding: 3rem;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+    filter: drop-shadow(.70em .70em .5em);
+    color:#4a4a31;
+    border-radius: 05%;
+
+}
+
+.card_data img{
+    border-radius: 06%;
+    width: 50%;
+    height: 100%;
+}
+
+.pro_content{
+    padding-left: 1rem;
+    font-size: 0.9rem;
+}
+
+.pro_content h2{
+    font-size: 1.3rem;
+    text-decoration: underline;
+    color:#c9c9b7;
+}
+
+.pro_content h3{
+    font-size: 1.2rem;
+    color:#c9c9b7;
+}
+
+.pro_content p{
+    font-size: 1 rem;
+    color:#c9c9b7;
+}
+
+.position{
+    font-size:0.8rem;
+    margin-bottom: 1rem;
+}
+
+
+/* Responsive columns */
+
+@media screen and (max-width: 1000px) {
+    .card-container {
+        width: 100%;
+        grid-template-columns: repeat(2,1fr);
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 682px) {
+    .card-container {
+        width: 100%;
+        grid-template-columns: repeat(1,1fr);
+        margin-bottom: 50px;
+  }
+}
+
+ 
